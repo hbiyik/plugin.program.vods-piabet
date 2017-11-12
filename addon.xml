@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<addon id="plugin.program.vods-piabet" name="PiaBET module for VODS" provider-name="boogiepop" version="0.0.1">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+    <import addon="plugin.video.vods" version="0.0.1" />
+    <import addon="script.module.htmlement" version="0.2.3" />
+  </requires>
+  <extension point="xbmc.python.pluginsource">
+		<provides/>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="en">PiaBET module for VODS</summary>
+  </extension>
+  <extension library="lib" point="xbmc.python.module" />
+  <extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">piaBET module for VODS</summary>
+		<description lang="en">PiaBET module for VODS</description>
+		<license>GNU General Public License, v2</license>
+		<language/>
+		<forum>https://github.com/boogiepy/plugin.program.vods-piabet/issues</forum>
+		<source/>
+		<website>https://github.com/boogiepy/plugin.program.vods-piabet</website>
+		<email>boogiepop@gmx.com</email>
+  </extension>
+  <tinyxbmc>
+  	<plugin path="lib" id="vodsmovie" module="piabet" instance="piabet"/>
+  </tinyxbmc>
+</addon>
