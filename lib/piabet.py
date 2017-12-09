@@ -25,6 +25,9 @@ domain = "https://www.dinamobet.tv"
 
 
 class piabet(vods.movieextension):
+    uselinkplayers = False
+    useaddonplayers = False
+
     def getmovies(self, args=None):
         page = self.download(domain)
         tree = htmlement.fromstring(page)
