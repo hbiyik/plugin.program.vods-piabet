@@ -21,15 +21,21 @@ import vods
 import htmlement
 import re
 
-domain = "https://www.dinamobet.tv"
-
 
 class piabet(vods.movieextension):
     uselinkplayers = False
     useaddonplayers = False
 
+    def getdomain(self):
+        domain = self.setting.getstr("domain")
+        if not domain.startswith("http"):
+            domain = "https://" + domain
+        if domain.endswith("/"):
+            domain = domain[:-1]
+        return domain
+
     def getmovies(self, args=None):
-        page = self.download(domain)
+        page = self.download(self.getdomain())
         tree = htmlement.fromstring(page)
         for channel in tree.findall(".//div/div"):
             cls = channel.get("class")
@@ -47,7 +53,7 @@ class piabet(vods.movieextension):
                     self.additem(prefix + title.text, url.get("href"))
 
     def geturls(self, url):
-        cpage = self.download(url, referer=domain)
+        cpage = self.download(url, referer=self.getdomain())
         tree = htmlement.fromstring(cpage)
         for iframe in tree.findall(".//iframe"):
             src = iframe.get("src")
